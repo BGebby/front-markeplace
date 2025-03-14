@@ -7,6 +7,6 @@ export default defineConfig({
     port: Number(process.env.VITE_PORT) || 5173, // ✅ Convierte a número
   },
   define: {
-    "process.env": process.env, // Asegura que process.env esté disponible
+    "import.meta.env.VITE_API_URL": JSON.stringify(process.env.VITE_API_URL), // ✅ Inyectar variable correctamente
   },
 });
