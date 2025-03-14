@@ -1,6 +1,8 @@
-
 services:
   react-app:
-    build: .
+    build:
+      context: .
+      args:
+        VITE_API_URL: $VITE_API_URL
     ports:
       - $VITE_PORT:$DOCKER_PORT

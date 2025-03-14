@@ -1,7 +1,11 @@
 # Etapa de construcción
 FROM node:18 AS build
 
+# Definir argumentos para variables de entorno
+ARG VITE_API_URL
+
 WORKDIR /app
+
 RUN chmod -R 777 /app
 
 # Copiar archivos de entorno y dependencias
@@ -10,6 +14,10 @@ RUN npm install --frozen-lockfile
 
 # Copiar el código fuente y construir el proyecto
 COPY . .
+
+# Pasar la variable de entorno durante la construcción
+ENV VITE_API_URL=$VITE_API_URL
+
 RUN npm run build
 
 # Etapa de producción (usando Nginx)
