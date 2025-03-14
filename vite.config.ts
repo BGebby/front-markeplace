@@ -1,13 +1,12 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import dotenv from "dotenv";
-
-// Cargar variables de entorno
-dotenv.config();
 
 export default defineConfig({
   plugins: [react()],
   server: {
-    port: Number(process.env.VITE_PORT) || 5173, // Leer desde process.env
+    port: Number(process.env.VITE_PORT) || 5173, // ✅ Convierte a número
+  },
+  define: {
+    "process.env": process.env, // Asegura que process.env esté disponible
   },
 });
