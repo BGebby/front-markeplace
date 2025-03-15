@@ -1,7 +1,1 @@
-export const placeholderImage = "data:image/svg+xml;base64," + btoa(`
-    <svg width="100" height="120" xmlns="http://www.w3.org/2000/svg">
-      <rect width="100" height="120" fill="none" stroke="#ccc" stroke-width="2" stroke-dasharray="5,5"/>
-      <polygon points="80,0 100,0 100,20" fill="#ccc"/>
-      <text x="50" y="60" font-size="12" fill="#999" text-anchor="middle" alignment-baseline="middle">No Image</text>
-    </svg>
-  `);
+  export const placeholderImage = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMjAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2NjYyIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtZGFzaGFycmF5PSI1LDUiLz4KPHBvbHlnb24gcG9pbnRzPSI4MCwwIDEwMCwwIDEwMCwyMCIgZmlsbD0iI2NjYyIvPgo8dGV4dCB4PSI1MCIgeT0iNjAiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiM5OTkiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGFsaWdubWVudC1iYXNlbGluZT0ibWlkZGxlIj5ObyBJbWFnZTwvdGV4dD4KPC9zdmc+";  
