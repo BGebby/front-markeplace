@@ -1,15 +1,27 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../store';
-import { removeFromCart, updateQuantity } from '../../store/slices/cartSlice';
+import { clearCart, removeFromCart, updateQuantity } from '../../store/slices/cartSlice';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
+interface Item {
+  precio: string | number; // Asegura que puede ser string o número
+  quantity: number;
+}
 const Cart = () => {
   const cart = useSelector((state: RootState) => state.cart);
   const dispatch = useDispatch();
-  const total = cart.items.reduce((sum, item) => sum + (item.precio ?? 0) * item.quantity, 0);
+  const total = cart.items.reduce((sum, item:Item) => {
+      const precioNumerico = typeof item.precio === "string" 
+          ? parseFloat(item.precio.replace(/\./g, "").replace(",", ".")) 
+          : item.precio;
+
+      return sum + (precioNumerico * item.quantity);
+  }, 0);
+
   const navigate = useNavigate();
   const handleLogout = (showSwal: boolean) => {
+    dispatch(clearCart());
     if (showSwal) {
       Swal.fire({
         icon: "success",
@@ -66,7 +78,8 @@ const Cart = () => {
             <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
               <div className="flex justify-between text-lg font-medium text-gray-900">
                 <p>Total</p>
-                <p>${total.toLocaleString('es-ES')}</p>
+                <p>${total.toLocaleString().replace(",", ".")}</p>
+
               </div>
               <div className="mt-6">
                 <button

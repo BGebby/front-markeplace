@@ -5,7 +5,7 @@ import { Box } from '@mui/material';
 const Carousel = ({ images }:any) => {
   const settings = {
     autoplay: true,          
-    autoplaySpeed: 1000,      
+    autoplaySpeed: 3000,      
     dots: true,               
     infinite: images.length > 1,           
     speed: 300,               
