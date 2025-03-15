@@ -7,7 +7,7 @@ const Carousel = ({ images }:any) => {
     autoplay: true,          
     autoplaySpeed: 1000,      
     dots: true,               
-    infinite: true,           
+    infinite: images.length > 1,           
     speed: 300,               
     slidesToShow: 1,          
     slidesToScroll: 1,       

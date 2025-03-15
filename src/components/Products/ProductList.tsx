@@ -49,7 +49,7 @@ const ProductList = () => {
   }, [search, products]);
 
   const handleAddToCart = (product: Product) => {
-    console.log("Producto agregado:", product);
+   
     toast("Producto agregado", {
       type: "success",
       draggable: true,
@@ -105,11 +105,7 @@ const ProductList = () => {
               <div className="mt-4 flex flex-col items-start">
                 {product.imagen && (
                   <img
-                    src={`${import.meta.env.VITE_API_URL}${
-                      product.imagen.startsWith("/")
-                        ? product.imagen.slice(1)
-                        : product.imagen
-                    }`}
+                    src={product.imagen}
                     alt="Imagen del producto"
                     className="w-full h-auto max-w-[300px] sm:max-w-[400px] md:max-w-[500px] lg:max-w-[700px]"
                   />

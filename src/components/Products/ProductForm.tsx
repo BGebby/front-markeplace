@@ -5,9 +5,12 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../store";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { useState } from "react";
+import axios, { AxiosError } from "axios"; 
 
 const ProductForm = () => {
   const { user } = useSelector((state: RootState) => state.auth);
+  const [serverError, setServerError] = useState('');
   const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
@@ -45,8 +48,14 @@ const ProductForm = () => {
           });
           navigate("/products");
         }
-      } catch (error) {
-        console.error("Error al crear producto:", error);
+      } catch (error: unknown) {
+        let errorMessage = "No se pudo registrar el producto. Intente nuevamente.";
+
+        if (axios.isAxiosError(error)) {
+          
+          errorMessage = error.response?.data?.message || errorMessage;
+        }
+        setServerError(errorMessage);
       }
     },
   });
@@ -58,6 +67,7 @@ const ProductForm = () => {
           Registrar producto
         </h2>
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-6">
+        {serverError && <p className="text-red-500 text-sm text-center">{serverError}</p>}
           <form onSubmit={formik.handleSubmit} className="space-y-6">
             {/* Nombre */}
             <div>

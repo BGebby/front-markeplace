@@ -3,12 +3,14 @@ import { productsAPI } from "../../services/api";
 import Carousel from "../Layout/Carusuel";
 import { Product } from "../../types";
 import Footer from "../Layout/Footer";
+import { placeholderImage } from "../../helpers/image";
 
 const Home = () => {
   
   const [products, setProducts] = useState<Product[]>([]);
+  
   const productImages = products.map((product) => {
-    const imageUrl = product.imagen ? `${import.meta.env.VITE_API_URL}${product.imagen.startsWith("/") ? product.imagen.slice(1) : product.imagen}` : null;
+    const imageUrl = product.imagen ?  product.imagen  : placeholderImage;
     return imageUrl;
   });
 
