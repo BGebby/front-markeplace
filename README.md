@@ -60,6 +60,9 @@ Agregar productos al carrito de compras
 
 Administradores
 
+email:admin@admin.com 
+contraseña:admin123
+
 Ver todos los productos registrados
 
 Filtrar productos por vendedor
